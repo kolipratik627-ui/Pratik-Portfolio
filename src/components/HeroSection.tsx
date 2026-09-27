@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FadeIn } from './FadeIn';
 import { Magnet } from './Magnet';
 import { ContactButton } from './Buttons';
+import { HeroCharacter } from './HeroCharacter';
 
 interface HeroSectionProps {
   onContactClick?: () => void;
@@ -132,16 +133,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
             inactiveTransition="transform 0.6s ease-in-out"
             className="w-full flex items-end justify-center"
           >
-            <div className="relative group">
-              {/* Subtle ambient backglow */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#B600A8]/20 via-[#7621B0]/15 to-transparent blur-3xl -z-10 transform scale-110 pointer-events-none" />
-              <img
-                src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
-                alt="Pratik Koli - 3D Sales Character"
-                className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)] filter contrast-105"
-                loading="eager"
-              />
-            </div>
+            <HeroCharacter
+              imageUrl="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
+              alt="Pratik Koli - 3D Sales Character"
+              className="w-full"
+            />
           </Magnet>
         </FadeIn>
       </div>

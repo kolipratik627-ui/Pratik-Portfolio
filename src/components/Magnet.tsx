@@ -22,18 +22,10 @@ export const Magnet: React.FC<MagnetProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    // Disable cursor-follow on touch devices
-    const isTouch =
-      typeof window !== 'undefined' &&
-      ('ontouchstart' in window ||
-        navigator.maxTouchPoints > 0 ||
-        window.matchMedia('(pointer: coarse)').matches);
-
-    if (isTouch) {
-      return;
-    }
-
     const handleMouseMove = (e: MouseEvent) => {
+      // Ignore touch events on mobile
+      if ('pointerType' in e && (e as any).pointerType === 'touch') return;
+      if (typeof window !== 'undefined' && window.innerWidth < 640) return;
       if (!ref.current) return;
       const rect = ref.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
